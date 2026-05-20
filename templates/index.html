@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartDoc AI</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="hero">
+            <h1>Smart<span>Doc</span> AI</h1>
+            <p>Conversational Multi-Document RAG Assistant</p>
+        </div>
+
+        <!-- Upload Card -->
+        <div class="card">
+
+            <div class="section-title">
+                Upload Documents
+            </div>
+
+            <form method="POST" enctype="multipart/form-data">
+
+                <div class="drop-zone" onclick="document.getElementById('file-input').click()">
+
+                    <h3>Drop files here</h3>
+
+                    <p>
+                        Supports PDF, DOCX, TXT, CSV & XLSX
+                    </p>
+
+                    <button type="button" class="browse-btn">
+                        Browse Files
+                    </button>
+
+                </div>
+
+                <input type="file" name="file" id="file-input" multiple accept=".pdf,.docx,.txt,.csv,.xlsx"
+                    onchange="showFiles(this.files)">
+
+                <div id="file-preview"></div>
+
+                <button type="submit" id="upload-btn">
+                    Upload & Process
+                </button>
+
+            </form>
+
+            {% if message %}
+            <div class="status success">
+                {{ message }}
+            </div>
+            {% endif %}
+
+        </div>
+
+        <!-- Query Card -->
+        <div class="card">
+
+            <div class="section-title">
+                Ask Questions
+            </div>
+
+            <form method="POST" onsubmit="showThinking()">
+
+                <textarea name="query" placeholder="Ask anything about your uploaded documents..."></textarea>
+
+                <button class="ask-btn" type="submit">
+                    Ask AI
+                </button>
+
+            </form>
+
+            <div class="thinking" id="thinking">
+
+                <span>Thinking</span>
+
+                <div class="dots">
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                </div>
+
+            </div>
+
+            {% if answer %}
+            <div class="answer-box" id="answer">
+                {{ answer }}
+            </div>
+            {% endif %}
+
+        </div>
+
+        <div class="footer">
+            Built with Flask, FAISS, SentenceTransformers & Groq LLM
+        </div>
+
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+
+</html>
