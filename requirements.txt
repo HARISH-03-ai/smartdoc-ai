@@ -2,11 +2,9 @@ flask
 python-dotenv
 openai
 chromadb
-sentence-transformers
+sentence-transformers==2.2.2
 pypdf
 python-docx
 pandas
 openpyxl
-torch
-transformers
 gunicorn

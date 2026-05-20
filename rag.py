@@ -10,7 +10,10 @@ from config import Config
 
 load_dotenv()
 chroma_client = chromadb.PersistentClient(path="chroma_db")
-model = SentenceTransformer(Config.EMBEDDING_MODEL)
+model = SentenceTransformer(
+    Config.EMBEDDING_MODEL,
+    device="cpu"
+)
 api_key=os.getenv("GROQ_API_KEY")
 
 if not api_key:
