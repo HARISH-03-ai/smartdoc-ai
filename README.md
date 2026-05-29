@@ -176,15 +176,15 @@ http://127.0.0.1:5000
 
 ### Login Page
 
-![Login Page](static/images/Login.png)
+![Login Page](static/image/Login.png)
 
 ### Signup Page
 
-![Signup Page](static/images/Signup.png)
+![Signup Page](static/image/Signup.png)
 
 ### Homepage & AI Response
 
-![Homepage](static/images/Homepage.png)
+![Homepage](static/image/Homepage.png)
 
 ---
 
